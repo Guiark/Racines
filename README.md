@@ -60,8 +60,3 @@ racines/
 ├─ src/     Sexe, Personne, ArbreGenealogique, Main
 └─ tests/   TestsRegles
 ```
-
-
-## Captures d'écran
-
-*(à ajouter : une capture du menu, de la consultation d'une parenté et d'un message d'erreur)*

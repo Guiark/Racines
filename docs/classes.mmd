@@ -1,0 +1,32 @@
+classDiagram
+  class Sexe {
+    <<enumeration>>
+    FEMININ
+    MASCULIN
+  }
+
+  class Personne {
+    -String prenom
+    -String nom
+    -Sexe sexe
+    -int anneeNaissance
+    -int anneeDeces
+    +parents() Personne[]
+    +grandsParents() Personne[]
+    +freresEtSoeurs() Personne[]
+    +descendants() Personne[]
+  }
+
+  class ArbreGenealogique {
+    -Personne[] personnes
+    +ajouter(p Personne)
+    +lier(parent Personne, enfant Personne)
+    +rechercher(nom String) Personne[]
+    +descendants(p Personne) Personne[]
+  }
+
+  Personne --> Sexe : sexe
+  Personne "parents 0..2" -- "enfants *" Personne : a pour parent
+  ArbreGenealogique "1" *-- "*" Personne : contient
+
+  note for Personne "anneeDeces est facultatif (0..1)\nRegle 1 : 2 parents maximum\nRegle 2 : annee parent < annee enfant\nRegle 3 : pas de boucle (jamais son propre ancetre)\nRegle 4 : anneeDeces >= anneeNaissance"
